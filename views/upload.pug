@@ -1,0 +1,10 @@
+extends layouts/main
+
+block content
+    .form_container
+        form(action=routes.videos+routes.upload)
+            label(for="file") Video File
+            input(type="file", id="file", name="file" ,required=true)
+            input(type="text", name='title', placeholder='Title' ,required=true)
+            textarea(name="description", placeholder='Description ',cols="6", rows="2" ,required=true)
+            input(type="submit", value='Update Video')
