@@ -9,4 +9,3 @@ userRouter.get(routes.editProfile, userController.editProfile); //먼저 위치�
 userRouter.get(routes.userDetail(), userController.userDetail);
 userRouter.get(routes.changePassword, userController.changePassword);
 export default userRouter;
-
