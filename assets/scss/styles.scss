@@ -1,3 +1,10 @@
-body {
-  background-color: paleturquoise;
-}
+@import 'config/_variables.scss';
+@import 'config/reset.scss';
+@import 'partials/header.scss';
+@import 'partials/footer.scss';
+@import 'partials/form.scss';
+@import 'partials/socialLogin.scss';
+@import 'main.scss';
+@import 'pages/videoDetail.scss';
+@import 'pages/userProfile.scss';
+@import 'pages/home.scss';

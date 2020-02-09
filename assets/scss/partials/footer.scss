@@ -1,0 +1,20 @@
+.footer {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid $oasis;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  .footer_icon {
+    color: $oasis;
+    background-color: white;
+    font-size: 35px;
+    margin-bottom: 11px;
+  }
+  .footer_text {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 800px;
+    text-transform: uppercase;
+  }
+}

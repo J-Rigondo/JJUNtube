@@ -1,0 +1,32 @@
+.user_profile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .user_profile_header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .user_avatar {
+      height: 80px;
+      background-color: $oasis;
+      border-radius: 50%;
+    }
+    .profile_username {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+    .profile_username {
+      font-weight: 600;
+      margin-top: 15px;
+    }
+  }
+  .user_profile_btn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    a {
+      margin-top: 15px;
+    }
+  }
+}

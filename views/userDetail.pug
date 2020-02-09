@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .user_profile
+        .user_profile_header            
+            img.user_avatar(src=user.avatarUrl, alt="")
+            h4.profile_username=user.name
+        if user.id === loggedUser.id
+            .user_profile_btn
+                a(href=routes.users + routes.editProfile)
+                    button Edit Profile

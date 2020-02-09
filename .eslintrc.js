@@ -3,26 +3,28 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: ["airbnb-base"],
+  extends: ['airbnb-base'],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: 'module'
   },
   rules: {
-    "linebreak-style": "off",
-    "spaced-comment": "off",
-    "eol-last": "off",
-    "space-before-blocks": "off",
-    "keyword-spacing": "off",
-    "key-spacing": "off",
-    "quote-props": "off",
-    "no-console": "off",
-    "space-in-parens": "off",
-    "no-trailing-spaces": "off",
-    "no-multi-spaces": "off"
+    'linebreak-style': 'off',
+    'spaced-comment': 'off',
+    'eol-last': 'off',
+    'space-before-blocks': 'off',
+    'keyword-spacing': 'off',
+    'key-spacing': 'off',
+    'quote-props': 'off',
+    'no-console': 'off',
+    'space-in-parens': 'off',
+    'no-trailing-spaces': 'off',
+    'no-multi-spaces': 'off',
+    'no-else-return': 'off',
+    'comma-dangle': 'off'
   }
 };

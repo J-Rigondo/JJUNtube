@@ -1,0 +1,63 @@
+.header {
+  background-color: $oasis;
+  margin-bottom: 50px;
+  .header_wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    .header_column {
+      i {
+        color: white;
+        font-size: 40px;
+      }
+      &:nth-child(2) {
+        width: 100%;
+        justify-self: center;
+      }
+      &:last-child {
+        justify-self: end;
+      }
+      ul {
+        padding: 15px;
+        display: flex;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        li:not(:last-child) {
+          margin-right: 23px;
+        }
+      }
+      form {
+        width: 100%;
+        input {
+          width: 86%;
+          padding: 7px;
+          vertical-align: middle;
+          border-radius: 5px 0 0 5px;
+          &::placeholder {
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.7);
+          }
+        }
+        button {
+          border-radius: 0 5px 5px 0;
+          padding: 0;
+          background-color: white;
+          width: 46px;
+          height: 30px;
+          border: none;
+          display: inline-block;
+          vertical-align: middle;
+          i {
+            color: $oasis;
+            font-size: 18px;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}

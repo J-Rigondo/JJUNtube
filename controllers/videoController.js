@@ -1,15 +1,14 @@
-import video from "../models/video";
-import routes from "../routes";
+import video from '../models/video';
+import routes from '../routes';
 
 export const home = async (req, res) => {
   //async and await
   try {
     const videos = await video.find({}).sort({ _id: -1 });
-    console.log(videos);
-    res.render("home", { pageTitle: "Home", videos });
+    res.render('home', { pageTitle: 'Home', videos });
   } catch (error) {
     console.log(error);
-    res.render("home", { pageTitle: "Home", videos: [] });
+    res.render('home', { pageTitle: 'Home', videos: [] });
   }
 };
 
@@ -22,16 +21,16 @@ export const search = async (req, res) => {
   let videos = [];
   try {
     videos = await video.find({
-      title: { $regex: searchingBy, $options: "i" }
+      title: { $regex: searchingBy, $options: 'i' }
     });
   } catch (error) {
     console.log(error);
   }
-  res.render("search", { pageTitle: "search", searchingBy, videos });
+  res.render('search', { pageTitle: 'search', searchingBy, videos });
 };
 
 export const upload = (req, res) => {
-  res.render("upload", { pageTitle: "upload" });
+  res.render('upload', { pageTitle: 'upload' });
 };
 
 export const postUpload = async (req, res) => {
@@ -55,7 +54,7 @@ export const videoDetail = async (req, res) => {
 
   try {
     const tempVideo = await video.findById(id);
-    res.render("videoDetail", { pageTitle: tempVideo.title, video: tempVideo });
+    res.render('videoDetail', { pageTitle: tempVideo.title, video: tempVideo });
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -68,7 +67,7 @@ export const editVideo = async (req, res) => {
   } = req;
   try {
     const tempVideo = await video.findById(id);
-    res.render("editVideo", {
+    res.render('editVideo', {
       pageTitle: `Edit ${tempVideo.title}`,
       video: tempVideo
     });
