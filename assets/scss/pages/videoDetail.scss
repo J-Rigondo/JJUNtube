@@ -30,10 +30,77 @@
     .video_description {
       font-size: 18px;
     }
+    .video_creator {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      a {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+
+        img {
+          margin-top: 15px;
+          height: 80px;
+          border-radius: 50%;
+        }
+        .creator_name {
+          text-align: center;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+      .video_description {
+        margin-left: 15px;
+      }
+    }
     .video_comments {
       margin-top: 25px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
       .video_comment_number {
+        display: inline-block;
+        margin-top: 15px;
         font-size: 18px;
+      }
+      .add_comment {
+        margin-top: 25px;
+        width: 100%;
+        text-align: center;
+        input {
+          max-width: 600px;
+        }
+      }
+      .video_commentsList {
+        width: 850px;
+        margin-top: 50px;
+        .comment_content {
+          display: flex;
+          .comment_profile {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 15px;
+            img {
+              width: 72px;
+              margin-top: 15px;
+              height: 80px;
+              border-radius: 50%;
+              margin-bottom: 15px;
+            }
+          }
+          &:not(:last-child) {
+            margin-bottom: 20px;
+          }
+          .comment_text {
+            width: 100%;
+            background-color: #e4dfdf;
+            display: inline-block;
+            padding: 20px;
+            font-size: 20px;
+          }
+        }
       }
     }
   }

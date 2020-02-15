@@ -17,6 +17,10 @@ main {
   min-height: 70vh;
 }
 
+progress {
+  all: unset;
+}
+
 button,
 input:not([type='file']),
 textarea,

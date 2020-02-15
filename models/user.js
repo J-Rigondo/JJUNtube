@@ -6,11 +6,28 @@ const UserSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   facebookId: Number,
-  githubId: Number
+  githubId: Number,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
+  videos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Video'
+    }
+  ]
 });
+
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
-mongoose.models = {};
-const model = mongoose.model('User', UserSchema);
+let model;
+if(mongoose.models.User){
+  model = mongoose.model('User');
+} else {
+  model = mongoose.model('User', UserSchema);
+}
 export default model;

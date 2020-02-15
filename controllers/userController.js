@@ -45,7 +45,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
 
   try {
     if (!email) {
-      throw new Error('email is not exist.');
+      throw Error();
     }
     const user = await User.findOne({ email });
     if (user) {
@@ -78,8 +78,7 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const editProfile = (req, res) =>
-  res.render('editProfile', { pagetitle: 'editProfile' });
+export const editProfile = (req, res) => res.render('editProfile', { pagetitle: 'editProfile' });
 
 export const postEditProfile = async (req, res) => {
   const {
@@ -103,30 +102,34 @@ export const userDetail = async (req, res) => {
   const {
     params: { id }
   } = req;
-  console.log(id);
-  const user = await User.findById(id);
-  console.log(user);
-  return res.render('userDetail', {
-    pageTitle: 'userDetail',
-    user
-  });
+  
+  try{
+    const user = await User.findById(id).populate('videos');    
+    res.render('userDetail', {
+      pageTitle: 'userDetail',
+      user
+    });
+  } catch(error){
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 export const changePassword = (req, res) => res.render('changePassword');
 
-export const postChangePassword = (req, res) => {
-  // const {
-  //   body: { oldPassword, newPassword, newPassword1 }
-  // } = req;
-  // try {
-  //   if (newPassword !== newPassword1) {
-  //     res.status(400);
-  //     res.redirect(routes.changePassword);
-  //   } else {
-  //     req.user.changePassword(oldPassword, newPassword);
-  //     res.redirect(routes.home);
-  //   }
-  // } catch (error) {
-  //   res.redirect(routes.changePassword);
-  // }
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword1 }
+  } = req;
+  try {
+    if (newPassword !== newPassword1) {
+      res.status(400);
+      res.redirect(routes.users + routes.changePassword);
+    } else {
+      await req.user.changePassword(oldPassword, newPassword);
+      res.redirect(routes.home);
+    }
+  } catch (error) {
+    res.redirect(routes.users + routes.changePassword);
+  }
 };

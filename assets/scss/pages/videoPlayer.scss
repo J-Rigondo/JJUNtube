@@ -1,0 +1,41 @@
+.video_player {
+  position: relative;
+  &:hover {
+    .videoPlayer_controls {
+      opacity: 1;
+    }
+  }
+  .videoPlayer_controls {
+    width: 100%;
+    //opacity: 0;
+    transition: opacity 0.4s linear;
+    color: white;
+    position: absolute;
+    bottom: 4px;
+    padding: 10px;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 16px;
+    .videoPlayer_column:first-child,
+    :nth-child(2) {
+      .videoPlayer_volume {
+        width: 96px;
+        height: 1px;
+      }
+    }
+    .videoPlayer_column:last-child {
+      justify-self: end;
+      .video_timer {
+        margin-right: 10px;
+      }
+      margin-right: 10px;
+    }
+
+    i {
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
+}

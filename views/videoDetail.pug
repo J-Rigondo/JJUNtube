@@ -1,19 +1,35 @@
 extends layouts/main
+include mixins/videoPlayer
 
 block content
     .video_detail_container
-        .video_player        
-            video(src='/'+video.fileUrl, controls="true")
+        +videoPlayer({
+            src : video.fileUrl
+        })
         .video_info
-            button(type='button', onclick='location.href="'+routes.editVideo(video.id)+'"') Edit Video            
-            h5.video_title=video.title
+            if loggedUser && video.creator.id == loggedUser.id
+                button(type='button', onclick='location.href="'+routes.editVideo(video.id)+'"') Edit Video            
+            h5.video_title=video.title            
             if video.views === 1
                 span.video_views 1 view
             else
                 span.video_views #{video.views} views
-            p.video_description=video.description
-        .video_comments
-            if video.comments.length === 1
-                span.video_comment_number 1 comment
-            else
-                span.video_comment_number #{video.comments.length} comments
+            .video_creator
+                a(href="")
+                    img(src=video.creator.avatarUrl, alt="profile")
+                    span.creator_name=video.creator.name
+                p.video_description=video.description
+            .video_comments
+                if video.comments.length === 1
+                    span.video_comment_number 1 comment
+                else
+                    span.video_comment_number #{video.comments.length} comments
+                form.add_comment#jsAddComment(action="")                                     
+                    input(type="text", name='comment',size='10' ,placeholder='Leave a comment ...')                    
+                ul.video_commentsList
+                    each comment in video.comments
+                        li.comment_content                       
+                            a.comment_profile(href="")
+                                img(src=comment.creator.avatarUrl, alt="profile")
+                                span=comment.creator.name
+                            span.comment_text=comment.text
